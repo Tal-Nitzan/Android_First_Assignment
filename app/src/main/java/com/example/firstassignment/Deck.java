@@ -1,20 +1,23 @@
 package com.example.firstassignment;
 
 public class Deck {
-    protected Card[][] cards;
-    protected int drawedCards;
+    private Card[][] cards;
+    private int drawedCards;
 
     public Deck() {
-        cards = new Card[4][12];
+        cards = new Card[4][13];
+        initDeck();
+        this.drawedCards = 0;
+    }
+
+    void initDeck() {
         for (int i = 0; i < cards.length; i++) {
             for (int j = 0; j < cards[0].length; j++) { // 0=h 1=d
                 cards[i][j] = new Card(j+2, Card.calculateSign(i));
             }
         }
         this.shuffle();
-        this.drawedCards = 0;
     }
-
     void shuffle() {
         int numOfSwaps = ((int)(Math.random() * 48)) + 52; // The swap will generate a number between 52..100.
         for (int i=0 ; i<numOfSwaps ; i++) {
@@ -27,9 +30,14 @@ public class Deck {
             cards[cardSign2][cardValue2] = temp;
         }
     }
+
+    public boolean isEmpty() {
+        return drawedCards == 52;
+    }
+
     Card drawCard() {
         drawedCards++;
-        return cards[((drawedCards-1)/4)%4][(drawedCards-1)%12];
+        return cards[((drawedCards-1)/4)%4][(drawedCards-1)%13];
     }
 
 }

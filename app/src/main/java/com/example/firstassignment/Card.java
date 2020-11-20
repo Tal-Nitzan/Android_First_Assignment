@@ -1,9 +1,10 @@
 package com.example.firstassignment;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     int value;
     char sign; // h = hearts, d = diamonds, c = clubs, s = spade
-    int imgId;
 
     Card(int value, char sign) {
         this.setValue(value);
@@ -26,10 +27,18 @@ public class Card {
         return this.sign;
     }
 
+
+    public static Card getWinningCard(Card card1, Card card2) {
+        if (card1.getValue() >= card2.getValue()) {
+            return card1;
+        }
+        else {
+            return card2;
+        }
+    }
+
     static char calculateSign(int num) {
         switch (num) {
-            case 0:
-                return 'h';
             case 1:
                 return 'd';
             case 2:

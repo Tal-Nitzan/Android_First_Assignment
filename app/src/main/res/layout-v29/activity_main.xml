@@ -40,6 +40,7 @@
             android:id="@+id/IMG_player1"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"
+            android:forceDarkAllowed="true"
             android:layout_height="60dp"
             android:src="@drawable/player_1"/>
 
