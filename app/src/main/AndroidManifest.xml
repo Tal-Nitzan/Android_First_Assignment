@@ -13,7 +13,8 @@
 
 
 
-        <activity android:name=".WinnerActivity">
+        <activity android:name=".WinnerActivity"
+            android:screenOrientation="landscape">
 
 
         </activity>
