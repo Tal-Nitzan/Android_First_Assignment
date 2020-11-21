@@ -1,3 +1,4 @@
+//Code has been reviewed, Assignment 1 is ready
 package com.example.firstassignment;
 
 import android.content.Intent;
