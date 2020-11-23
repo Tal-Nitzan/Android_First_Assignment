@@ -24,6 +24,10 @@ public class Deck {
         this.shuffle();
     }
 
+    public int getDrawedCards() {
+        return drawedCards;
+    }
+
     public void shuffle() {
         Random rand = new Random();
         int numOfSwaps = rand.nextInt((TOTAL_NUM_CARDS) + 1) + TOTAL_NUM_CARDS; // The swap will generate a number between TOTAL_NUM_CARDS..(TOTAL_NUM_CARDS*2).

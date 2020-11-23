@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView IMG_player2;
     private TextView LBL_leftPlayer;
     private TextView LBL_rightPlayer;
+    private TextView LBL_cardsRemaining;
     private Game game;
 
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        LBL_cardsRemaining.setText("Cards left: " + (Deck.TOTAL_NUM_CARDS));
         LBL_leftScore.setText("" + game.getP1().getScore());
         LBL_rightScore.setText("" + game.getP2().getScore());
         LBL_leftPlayer.setText(game.getP1().getName());
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 IMG_rightCard.setImageResource(id2);
                 LBL_leftScore.setText("" + game.getP1().getScore());
                 LBL_rightScore.setText("" + game.getP2().getScore());
+                LBL_cardsRemaining.setText("Cards left: " + ((Deck.TOTAL_NUM_CARDS)-game.getDeck().getDrawedCards()));
                 if (game.isDone()) {
                     openWinnerActivity(game.getWinner());
                 }
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         IMG_player2 = findViewById(R.id.IMG_player2);
         LBL_leftPlayer = findViewById(R.id.LBL_leftPlayer);
         LBL_rightPlayer = findViewById(R.id.LBL_rightPlayer);
+        LBL_cardsRemaining = findViewById(R.id.LBL_cardsRemaining);
     }
 
 
