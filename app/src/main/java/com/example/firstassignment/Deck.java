@@ -1,7 +1,7 @@
 package com.example.firstassignment;
 
 public class Deck {
-    private Card[][] cards;
+    private final Card[][] cards;
     private int drawedCards;
 
     public Deck() {
