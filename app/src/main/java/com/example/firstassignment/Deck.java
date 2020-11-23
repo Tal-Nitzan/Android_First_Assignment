@@ -6,7 +6,7 @@ public class Deck {
     public static final int NUM_OF_SIGNS = 4;
     public static final int NUM_OF_CARDS = 13;
     public static final int TOTAL_NUM_CARDS = NUM_OF_CARDS*NUM_OF_SIGNS;
-    private Card[][] cards;
+    private final Card[][] cards;
     private int drawedCards;
 
     public Deck() {
