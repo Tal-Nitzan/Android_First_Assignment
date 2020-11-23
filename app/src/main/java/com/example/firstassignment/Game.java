@@ -9,7 +9,7 @@ public class Game {
     private Deck deck;
 
 
-    Game() {
+    public Game() {
         this.p1 = new Player("Tal");
         this.p2 = new Player("Tomchin");
         this.deck = new Deck();
@@ -52,11 +52,10 @@ public class Game {
     }
 
 
-
     public void makeStep() {
-        p1.currentCard = deck.drawCard();
-        p2.currentCard = deck.drawCard();
-        calculatePoint(p1.currentCard, p2.currentCard);
+        p1.setCurrentCard(deck.drawCard());
+        p2.setCurrentCard(deck.drawCard());
+        calculatePoint(p1.getCurrentCard(), p2.getCurrentCard());
     }
 
 
@@ -72,23 +71,3 @@ public class Game {
         }
     }
 }
-
-
-
-//                if (deck.drawedCards == 52) {
-//                        if (p1.getScore() >= p2.getScore()) {
-//                        openWinnerActivity(p1);
-//                        } else if (p1.getScore() < p2.getScore()) {
-//        openWinnerActivity(p2);
-//        }
-//        return;
-//        }
-//        p1.currentCard = deck.drawCard();
-//        p2.currentCard = deck.drawCard();
-//        int id1 = getResources().getIdentifier(String.format("card_%s_%c", p1.currentCard.getValue(), p1.currentCard.getSign()), "drawable", getPackageName());
-//        int id2 = getResources().getIdentifier(String.format("card_%s_%c", p2.currentCard.getValue() , p2.currentCard.getSign()), "drawable", getPackageName());
-//        Log.d("pttt2", "" + id1);
-//        Log.d("pttt2", "" + id2);
-//        IMG_leftCard.setImageResource(id1);
-//        IMG_rightCard.setImageResource(id2);
-//        calculatePoint(p1.currentCard, p2.currentCard);

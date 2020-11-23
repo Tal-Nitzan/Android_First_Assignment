@@ -3,22 +3,30 @@ package com.example.firstassignment;
 import java.io.Serializable;
 
 public class Player implements Serializable {
-    String name;
-    int score;
-    Card currentCard;
+    private String name;
+    private int score;
+    private Card currentCard;
 
-    Player(String name) {
+    public Player(String name) {
         this.score = 0;
         this.name = name;
     }
 
-    void addPoint() {
+    public Card getCurrentCard() {
+        return currentCard;
+    }
+
+    public void setCurrentCard(Card currentCard) {
+        this.currentCard = currentCard;
+    }
+
+    public void addPoint() {
         this.score++;
     }
 
-    String getName() {return this.name;};
+    public String getName() {return this.name;};
 
-    int getScore() {
+    public int getScore() {
         return score;
     }
 

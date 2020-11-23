@@ -3,27 +3,27 @@ package com.example.firstassignment;
 import java.io.Serializable;
 
 public class Card implements Serializable {
-    int value;
-    char sign; // h = hearts, d = diamonds, c = clubs, s = spade
+    private int value;
+    private char sign; // h = hearts, d = diamonds, c = clubs, s = spade
 
-    Card(int value, char sign) {
+    public Card(int value, char sign) {
         this.setValue(value);
         this.setSign(sign);
     }
 
-    void setValue(int value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
-    int getValue() {
+    public int getValue() {
         return this.value;
     }
 
-    void setSign(char sign) {
+    public void setSign(char sign) {
         this.sign = sign;
     }
 
-    int getSign() {
+    public int getSign() {
         return this.sign;
     }
 
@@ -37,7 +37,7 @@ public class Card implements Serializable {
         }
     }
 
-    static char calculateSign(int num) {
+    public static char calculateSign(int num) {
         switch (num) {
             case 1:
                 return 'd';
