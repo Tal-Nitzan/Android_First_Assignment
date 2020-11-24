@@ -7,6 +7,8 @@ public class Player implements Serializable {
     private int score;
     private Card currentCard;
 
+    public Player() {}
+
     public Player(String name) {
         this.score = 0;
         this.name = name;

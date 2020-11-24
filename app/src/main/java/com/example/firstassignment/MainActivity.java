@@ -19,11 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton BTN_nextDraw;
     private TextView LBL_leftScore;
     private TextView LBL_rightScore;
-    private TextView LBL_winner;
     private ImageView IMG_leftCard;
     private ImageView IMG_rightCard;
-    private ImageView IMG_player1;
-    private ImageView IMG_player2;
     private TextView LBL_leftPlayer;
     private TextView LBL_rightPlayer;
     private TextView LBL_cardsRemaining;
@@ -79,11 +76,8 @@ public class MainActivity extends AppCompatActivity {
         BTN_nextDraw = findViewById(R.id.BTN_nextDraw);
         LBL_leftScore = findViewById(R.id.LBL_leftScore);
         LBL_rightScore = findViewById(R.id.LBL_rightScore);
-        LBL_winner = findViewById(R.id.LBL_winner);
         IMG_leftCard = findViewById(R.id.IMG_leftCard);
         IMG_rightCard = findViewById(R.id.IMG_rightCard);
-        IMG_player1 = findViewById(R.id.IMG_player1);
-        IMG_player2 = findViewById(R.id.IMG_player2);
         LBL_leftPlayer = findViewById(R.id.LBL_leftPlayer);
         LBL_rightPlayer = findViewById(R.id.LBL_rightPlayer);
         LBL_cardsRemaining = findViewById(R.id.LBL_cardsRemaining);

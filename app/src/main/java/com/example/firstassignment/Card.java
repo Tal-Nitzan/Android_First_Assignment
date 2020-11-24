@@ -6,6 +6,8 @@ public class Card implements Serializable {
     private int value;
     private char sign; // h = hearts, d = diamonds, c = clubs, s = spade
 
+    public Card() {}
+
     public Card(int value, char sign) {
         this.setValue(value);
         this.setSign(sign);
