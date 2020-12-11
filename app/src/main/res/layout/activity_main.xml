@@ -8,6 +8,18 @@
     tools:context=".MainActivity"
     android:background="@drawable/background_clouds">
 
+    <ProgressBar
+        android:id="@+id/main_PRGBAR_nextDraw"
+        android:layout_width="250dp"
+        android:layout_height="10dp"
+        android:layout_alignParentTop="true"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:scaleY="1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:max="26"
+        android:progressDrawable="@drawable/custom_progress"/>
+
     <ImageButton
         android:id="@+id/BTN_nextDraw"
         android:layout_width="50dp"

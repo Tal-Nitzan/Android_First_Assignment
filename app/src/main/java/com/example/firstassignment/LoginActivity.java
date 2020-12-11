@@ -3,6 +3,7 @@ package com.example.firstassignment;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import static com.example.firstassignment.Constants.SP_FILE;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+//        clearCache(); // To clear cache
         findViews();
         initViews();
     }
@@ -47,6 +51,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+    private void clearCache() {
+        SharedPreferences preferences = getSharedPreferences(SP_FILE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
+    }
 
     private void findViews() {
         login_BTN_newGame = findViewById(R.id.login_BTN_newGame);

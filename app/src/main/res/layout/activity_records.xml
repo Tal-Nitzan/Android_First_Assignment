@@ -5,13 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecordsActivity"
-    android:background="@drawable/background_clouds"
-    android:gravity="center">
+    android:background="@drawable/background_clouds">
 
-    <TextView
-        android:id="@+id/records_LBL_temp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <FrameLayout
+            android:id="@+id/records_LAY_top10"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginEnd="100dp"/>
+
+        <FrameLayout
+            android:id="@+id/records_LAY_map"
+            android:layout_width="250dp"
+            android:layout_height="250dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"/>
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
 
+        <ImageButton
+            android:id="@+id/login_BTN_newGame"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/play_button"/>
+
+        <TextView
+            android:id="@+id/login_LBL_newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_game"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+    </LinearLayout>
 </RelativeLayout>

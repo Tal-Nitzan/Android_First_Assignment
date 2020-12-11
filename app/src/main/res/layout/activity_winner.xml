@@ -8,15 +8,60 @@
     tools:context=".WinnerActivity"
     android:background="@drawable/background_clouds">
 
-
-    <ImageButton
-        android:id="@+id/BTN_replay"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/replay_button"/>
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/winner_BTN_newGame"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/play_button"/>
+
+            <TextView
+                android:id="@+id/winner_LBL_newGame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_game"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginLeft="200dp">
+
+            <ImageButton
+                android:id="@+id/winner_BTN_records"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/play_button"/>
+
+            <TextView
+                android:id="@+id/winner_LBL_records"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/records"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
 
     <TextView
