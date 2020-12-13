@@ -27,6 +27,16 @@ public class MySP {
         editor.apply();
     }
 
+    public void putDouble(String key, double value) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(key, (long)value);
+        editor.apply();
+    }
+
+    public double getDouble(String key, double def) {
+        return ((double)prefs.getLong(key, (long)def));
+    }
+
     public String getString(String key, String def) {
         return prefs.getString(key, def);
     }

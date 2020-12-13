@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageButton login_BTN_records;
     TextView login_LBL_newGame;
     TextView login_LBL_records;
+    TextView login_LBL_warGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         login_BTN_records = findViewById(R.id.login_BTN_records);
         login_LBL_newGame = findViewById(R.id.login_LBL_newGame);
         login_LBL_records = findViewById(R.id.login_LBL_records);
+        login_LBL_warGame = findViewById(R.id.login_LBL_warGame);
     }
 
     private void openMainActivity() {

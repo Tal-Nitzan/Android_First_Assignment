@@ -1,5 +1,5 @@
 package com.example.firstassignment;
 
 public interface CallBack_Top10 {
-    void displayLocation(double lat, double lon);
+    void displayLocation(String name, int score, double lat, double lon);
 }

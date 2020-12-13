@@ -48,7 +48,7 @@
                 android:id="@+id/login_BTN_records"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:background="@drawable/play_button"/>
+                android:background="@drawable/records_button"/>
 
             <TextView
                 android:id="@+id/login_LBL_records"
@@ -60,5 +60,16 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_LBL_warGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WAR GAME"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
 
 </RelativeLayout>

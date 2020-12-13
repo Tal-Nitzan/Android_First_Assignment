@@ -43,4 +43,10 @@ dependencies {
 
     // Gson (convert Java Objects into their JSON representation)
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Google map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    // Current location
+    compile 'com.github.delight-im:Android-SimpleLocation:v1.1.0'
 }

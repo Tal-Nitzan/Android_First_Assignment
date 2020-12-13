@@ -2,6 +2,7 @@ package com.example.firstassignment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +29,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
 
-    final int DELAY = 200; // 1500ms = 1.5 second
+    final int DELAY = 400; // 1500ms = 1.5 second
     private ImageButton BTN_nextDraw;
     private TextView LBL_leftScore;
     private TextView LBL_rightScore;
@@ -38,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView LBL_rightPlayer;
     private TextView LBL_cardsRemaining;
     private Game game;
-    ProgressBar main_PRGBAR_nextDraw;
+    private ProgressBar main_PRGBAR_nextDraw;
+    private MediaPlayer mp;
+    private Timer carousalTimer;
 
 
     @Override
@@ -70,12 +73,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void openWinnerActivity(Player winner) {
-        Intent intent = new Intent(this, WinnerActivity.class);
-        intent.putExtra("theWinner", winner);
-        startActivity(intent);
-        finish();
-    }
 
     private void findViews() {
         BTN_nextDraw = findViewById(R.id.BTN_nextDraw);
@@ -90,13 +87,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startAutomatedGame() {
-        Timer carousalTimer = new Timer();
+        carousalTimer = new Timer();
         carousalTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mp = MediaPlayer.create(MainActivity.this, R.raw.snd_card);
+                        mp.start();
                         game.makeStep();
                         int id1 = getResources().getIdentifier(String.format("card_%s_%c", game.getP1().getCurrentCard().getValue(), game.getP1().getCurrentCard().getSign()), "drawable", getPackageName());
                         int id2 = getResources().getIdentifier(String.format("card_%s_%c", game.getP2().getCurrentCard().getValue() , game.getP2().getCurrentCard().getSign()), "drawable", getPackageName());
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         LBL_rightScore.setText("" + game.getP2().getScore());
                         LBL_cardsRemaining.setText("Cards left: " + ((Deck.TOTAL_NUM_CARDS)-game.getDeck().getDrawedCards()));
                         if (game.isDone()) {
+                            stopAutomatedGame();
                             openWinnerActivity(game.getWinner());
                         }
                         main_PRGBAR_nextDraw.incrementProgressBy(1);
@@ -115,6 +115,34 @@ public class MainActivity extends AppCompatActivity {
         }, 0, DELAY);
     }
 
+    private void stopAutomatedGame() {
+        carousalTimer.cancel();
+    }
+    private void openWinnerActivity(Player winner) {
+        Intent intent = new Intent(MainActivity.this, WinnerActivity.class);
+        intent.putExtra("theWinner", winner);
+        startActivity(intent);
+        finish();
+    }
+
+//    private void playCardSound(int rawId) {
+//        if (mp!=null  &&  mp.isPlaying()) {
+//            mp.reset();
+//            mp.release();
+//            mp = null;
+//        }
+//
+//        mp = MediaPlayer.create(this, rawId);
+//        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                mp.reset();
+//                mp.release();
+//                mp=null;
+//            }
+//        });
+//        mp.start();
+//    }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {

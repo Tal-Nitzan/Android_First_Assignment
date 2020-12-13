@@ -36,10 +36,10 @@ public class RecordsActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.records_LAY_map, fragment_map).commit();
     }
 
-    private CallBack_Top10 callBack_top = new CallBack_Top10() {
+    private final CallBack_Top10 callBack_top = new CallBack_Top10() {
         @Override
-        public void displayLocation(double lat, double lon) {
-            fragment_map.showLocationOnMap(lat, lon);
+        public void displayLocation(String name, int score, double lat, double lon) {
+            fragment_map.showLocationOnMap(name, score, lat, lon);
         }
     };
 

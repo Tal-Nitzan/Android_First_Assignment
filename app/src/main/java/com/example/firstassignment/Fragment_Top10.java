@@ -57,15 +57,15 @@ public class    Fragment_Top10 extends Fragment {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
         int topTenSize = theArray.size() > 10 ? 10 : theArray.size();
         for (int i=0 ; i<topTenSize; i++) {
-            Map<String, String> datum = new HashMap<String, String>();
-            datum.put("name", theArray.get(i).getName());
+            Map<String, String> tempMap = new HashMap<String, String>();
+            tempMap.put("name", theArray.get(i).getName());
             if (theArray.get(i).getScore() == -1) {
-                datum.put("score", "");
+                tempMap.put("score", "");
             }
             else {
-                datum.put("score", theArray.get(i).getScore() + "");
+                tempMap.put("score", theArray.get(i).getScore() + "");
             }
-            data.add(datum);
+            data.add(tempMap);
         }
         SimpleAdapter adapter = new SimpleAdapter(view.getContext(), data,
                 android.R.layout.simple_list_item_2,
@@ -73,13 +73,11 @@ public class    Fragment_Top10 extends Fragment {
                 new int[]{android.R.id.text1,
                         android.R.id.text2});
         top10_LSTVEW_theList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
                 if (callBack_top10 != null) {
-                    callBack_top10.displayLocation(position, position);
-//                    callBack_top10.displayLocation(32.05889116392735, 34.811619248137916);
+                    callBack_top10.displayLocation(theArray.get(position).getName(), theArray.get(position).getScore(), theArray.get(position).getLat(), theArray.get(position).getLon());
                 }
             }
         });

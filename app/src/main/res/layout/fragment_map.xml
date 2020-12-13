@@ -8,9 +8,13 @@
     android:background="@color/white"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/testing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapFragment_MAP_theMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:enabled="true"
+        android:clickable="true"
+        android:focusable="true" />
 
 </RelativeLayout>
