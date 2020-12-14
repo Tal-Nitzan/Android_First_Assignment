@@ -1,10 +1,8 @@
 package com.example.firstassignment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,16 +10,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,7 +20,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
 
-    final int DELAY = 400; // 1500ms = 1.5 second
+    final int DELAY = 750; // 1500ms = 1.5 second
     private ImageButton BTN_nextDraw;
     private TextView LBL_leftScore;
     private TextView LBL_rightScore;
@@ -42,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar main_PRGBAR_nextDraw;
     private MediaPlayer mp;
     private Timer carousalTimer;
+    private boolean startGamePressed = false;
 
 
     @Override
@@ -58,21 +50,19 @@ public class MainActivity extends AppCompatActivity {
         initViews();
     }
 
-    private void initViews() {
-        LBL_cardsRemaining.setText("Cards left: " + (Deck.TOTAL_NUM_CARDS));
-        LBL_leftScore.setText("" + game.getP1().getScore());
-        LBL_rightScore.setText("" + game.getP2().getScore());
-        LBL_leftPlayer.setText(game.getP1().getName());
-        LBL_rightPlayer.setText(game.getP2().getName());
-        BTN_nextDraw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startAutomatedGame();
-                BTN_nextDraw.setVisibility(View.GONE);
-            }
-        });
+    @Override
+    protected void onStart() { //
+        super.onStart();
+        if (startGamePressed) {
+            startAutomatedGame();
+        }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopAutomatedGame();
+    }
 
     private void findViews() {
         BTN_nextDraw = findViewById(R.id.BTN_nextDraw);
@@ -85,6 +75,23 @@ public class MainActivity extends AppCompatActivity {
         LBL_cardsRemaining = findViewById(R.id.LBL_cardsRemaining);
         main_PRGBAR_nextDraw = findViewById(R.id.main_PRGBAR_nextDraw);
     }
+
+    private void initViews() {
+        LBL_cardsRemaining.setText("Cards left: " + (Deck.TOTAL_NUM_CARDS));
+        LBL_leftScore.setText("" + game.getP1().getScore());
+        LBL_rightScore.setText("" + game.getP2().getScore());
+        LBL_leftPlayer.setText(game.getP1().getName());
+        LBL_rightPlayer.setText(game.getP2().getName());
+        BTN_nextDraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startGamePressed = true;
+                startAutomatedGame();
+                BTN_nextDraw.setVisibility(View.GONE);
+            }
+        });
+    }
+
 
     private void startAutomatedGame() {
         carousalTimer = new Timer();
@@ -105,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         LBL_rightScore.setText("" + game.getP2().getScore());
                         LBL_cardsRemaining.setText("Cards left: " + ((Deck.TOTAL_NUM_CARDS)-game.getDeck().getDrawedCards()));
                         if (game.isDone()) {
+                            startGamePressed = false;
                             stopAutomatedGame();
                             openWinnerActivity(game.getWinner());
                         }
@@ -118,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
     private void stopAutomatedGame() {
         carousalTimer.cancel();
     }
+
+
     private void openWinnerActivity(Player winner) {
         Intent intent = new Intent(MainActivity.this, WinnerActivity.class);
         intent.putExtra("theWinner", winner);
@@ -125,28 +135,8 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-//    private void playCardSound(int rawId) {
-//        if (mp!=null  &&  mp.isPlaying()) {
-//            mp.reset();
-//            mp.release();
-//            mp = null;
-//        }
-//
-//        mp = MediaPlayer.create(this, rawId);
-//        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                mp.reset();
-//                mp.release();
-//                mp=null;
-//            }
-//        });
-//        mp.start();
-//    }
-
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        Log.d("pttt", "onSaveInstanceState");
         super.onSaveInstanceState(outState);
     }
 }

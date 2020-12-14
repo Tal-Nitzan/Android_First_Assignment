@@ -6,9 +6,10 @@ import android.content.SharedPreferences;
 public class MySP {
     private static MySP instance;
     private final SharedPreferences prefs;
+    public final String SP_FILE = "MY_SP";
 
     private MySP(Context context) {
-        prefs = context.getSharedPreferences(Constants.SP_FILE, Context.MODE_PRIVATE);
+        prefs = context.getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
     }
 
     public static void init(Context context) {
@@ -55,5 +56,11 @@ public class MySP {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(key, value);
         editor.apply();
+    }
+
+    public void clearCache() {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.commit();
     }
 }

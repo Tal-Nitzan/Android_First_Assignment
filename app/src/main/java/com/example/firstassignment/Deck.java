@@ -9,6 +9,7 @@ public class Deck {
     private final Card[][] cards;
     private int drawedCards;
 
+
     public Deck() {
         cards = new Card[NUM_OF_SIGNS][NUM_OF_CARDS];
         initDeck();

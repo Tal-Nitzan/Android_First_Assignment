@@ -1,20 +1,10 @@
 package com.example.firstassignment;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.strictmode.InstanceCountViolation;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -36,14 +26,13 @@ public class Fragment_Map extends Fragment implements OnMapReadyCallback {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         findViews(view);
         initViews();
-
         return view;
     }
 
     public void showLocationOnMap(String name, int score, double lat, double lon) {
-        LatLng mylocation = new LatLng(lat, lon);
-        map.addMarker(new MarkerOptions().position(mylocation).title(name + " - " + score));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 9.0f));
+        LatLng location = new LatLng(lat, lon);
+        map.addMarker(new MarkerOptions().position(location).title(name + " - " + score));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 9.0f));
     }
 
     private void initViews() {
