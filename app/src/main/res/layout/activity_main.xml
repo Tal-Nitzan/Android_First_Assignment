@@ -52,8 +52,8 @@
             android:id="@+id/IMG_player1"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/player_1"/>
+            android:layout_height="60dp"/>
+<!--            android:src="@drawable/player_1"/>-->
 
         <TextView
             android:id="@+id/LBL_leftPlayer"
@@ -88,8 +88,8 @@
             android:id="@+id/IMG_player2"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/player_2"/>
+            android:layout_height="60dp"/>
+<!--            android:src="@drawable/player_2"/>-->
 
 
         <TextView

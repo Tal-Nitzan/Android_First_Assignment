@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView IMG_rightCard;
     private TextView LBL_leftPlayer;
     private TextView LBL_rightPlayer;
+    private ImageView IMG_leftPlayer;
+    private ImageView IMG_rightPlayer;
     private TextView LBL_cardsRemaining;
     private Game game;
     private ProgressBar main_PRGBAR_nextDraw;
@@ -73,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         IMG_rightCard = findViewById(R.id.IMG_rightCard);
         LBL_leftPlayer = findViewById(R.id.LBL_leftPlayer);
         LBL_rightPlayer = findViewById(R.id.LBL_rightPlayer);
+        IMG_leftPlayer = findViewById(R.id.IMG_player1);
+        IMG_rightPlayer = findViewById(R.id.IMG_player1);
         LBL_cardsRemaining = findViewById(R.id.LBL_cardsRemaining);
         main_PRGBAR_nextDraw = findViewById(R.id.main_PRGBAR_nextDraw);
     }
@@ -82,7 +86,9 @@ public class MainActivity extends AppCompatActivity {
         LBL_leftScore.setText("" + game.getP1().getScore());
         LBL_rightScore.setText("" + game.getP2().getScore());
         LBL_leftPlayer.setText(game.getP1().getName());
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("player_1","drawable",getPackageName())).into(IMG_leftPlayer);
         LBL_rightPlayer.setText(game.getP2().getName());
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("player_2","drawable",getPackageName())).into(IMG_rightPlayer);
         BTN_nextDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
