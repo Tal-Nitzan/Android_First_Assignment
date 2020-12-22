@@ -13,7 +13,7 @@ public class RecordsActivity extends AppCompatActivity {
 
     private Fragment_Map fragment_map;
     private Fragment_Top10 fragment_top10;
-    private ImageButton login_BTN_newGame;
+    private ImageButton records_BTN_newGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class RecordsActivity extends AppCompatActivity {
 
 
     private void initViews() {
-        login_BTN_newGame.setOnClickListener(new View.OnClickListener() {
+        records_BTN_newGame.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -53,6 +53,6 @@ public class RecordsActivity extends AppCompatActivity {
     }
 
     private void findViews() {
-        login_BTN_newGame = findViewById(R.id.login_BTN_newGame);
+        records_BTN_newGame = findViewById(R.id.records_BTN_newGame);
     }
 }
