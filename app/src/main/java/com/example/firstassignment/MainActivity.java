@@ -21,7 +21,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
 
-    final int DELAY = 200; // 1500ms = 1.5 second
+    final int DELAY = 750; // 1500ms = 1.5 second
     private ImageButton main_BTN_play;
     private TextView main_LBL_leftScore;
     private TextView main_LBL_rightScore;
