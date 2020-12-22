@@ -40,10 +40,10 @@ public class WinnerActivity extends AppCompatActivity {
     private ImageButton winner_BTN_records;
     private MediaPlayer mp;
     // random latitude and longitude values
-//    private final double LAT_MIN_VAL = 32;
-//    private final double LAT_MAX_VAL = 32.1;
-//    private final double LON_MIN_VAL = 34.8;
-//    private final double LON_MAX_VAL = 34.85;
+    private final double LAT_MIN_VAL = 32;
+    private final double LAT_MAX_VAL = 32.1;
+    private final double LON_MIN_VAL = 34.8;
+    private final double LON_MAX_VAL = 34.85;
     private Player winner;
 
     @Override
@@ -77,16 +77,16 @@ public class WinnerActivity extends AppCompatActivity {
 
     private void addWinnerToDb() {
         //Generating random location every win.
-//        Random r = new Random();
-//        latitude = LAT_MIN_VAL + (LAT_MAX_VAL - LAT_MIN_VAL) * r.nextDouble();
-//        longitude = LON_MIN_VAL + (LON_MAX_VAL - LON_MIN_VAL) * r.nextDouble();
+        Random r = new Random();
+        latitude = LAT_MIN_VAL + (LAT_MAX_VAL - LAT_MIN_VAL) * r.nextDouble();
+        longitude = LON_MIN_VAL + (LON_MAX_VAL - LON_MIN_VAL) * r.nextDouble();
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            OnGPS();
-        } else {
-            getLocation(); // Need to fix that so we update latitude and longitude here
-        }
+//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+//            OnGPS();
+//        } else {
+//            getLocation(); // Need to fix that so we update latitude and longitude here
+//        }
 
         String topTenString = MySP.getInstance().getString("topTenJson", "{}");
         Gson gson = new Gson();
@@ -104,55 +104,55 @@ public class WinnerActivity extends AppCompatActivity {
         MySP.getInstance().putString("topTenJson", topTenJson);
     }
 
-    private void OnGPS() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-            }
-        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
-    private void getLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                WinnerActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                WinnerActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-        } else {
-            locationManager.requestLocationUpdates(
-                    LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
-                        @Override
-                        public void onLocationChanged(@NonNull Location location) {
-                            longitude = location.getLongitude();
-                            latitude = location.getLatitude();
-                        }
-
-                        @Override
-                        public void onProviderEnabled(@NonNull String provider) {
-
-                        }
-
-                        @Override
-                        public void onProviderDisabled(@NonNull String provider) {
-
-                        }
-                    });
-            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if (locationGPS != null) {
-                latitude = locationGPS.getLatitude();
-                longitude = locationGPS.getLongitude();
-            } else {
-                Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+//    private void OnGPS() {
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+//            }
+//        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//        final AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
+//    }
+//    private void getLocation() {
+//        if (ActivityCompat.checkSelfPermission(
+//                WinnerActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                WinnerActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+//        } else {
+//            locationManager.requestLocationUpdates(
+//                    LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
+//                        @Override
+//                        public void onLocationChanged(@NonNull Location location) {
+//                            longitude = location.getLongitude();
+//                            latitude = location.getLatitude();
+//                        }
+//
+//                        @Override
+//                        public void onProviderEnabled(@NonNull String provider) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onProviderDisabled(@NonNull String provider) {
+//
+//                        }
+//                    });
+//            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//            if (locationGPS != null) {
+//                latitude = locationGPS.getLatitude();
+//                longitude = locationGPS.getLongitude();
+//            } else {
+//                Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
 
     private void findViews() {
         winner_BTN_newGame = findViewById(R.id.winner_BTN_newGame);
