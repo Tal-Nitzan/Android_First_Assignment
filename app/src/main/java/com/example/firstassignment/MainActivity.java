@@ -22,16 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     final int DELAY = 200; // 1500ms = 1.5 second
-    private ImageButton BTN_nextDraw;
-    private TextView LBL_leftScore;
-    private TextView LBL_rightScore;
-    private ImageView IMG_leftCard;
-    private ImageView IMG_rightCard;
-    private TextView LBL_leftPlayer;
-    private TextView LBL_rightPlayer;
-    private ImageView IMG_leftPlayer;
-    private ImageView IMG_rightPlayer;
-    private TextView LBL_cardsRemaining;
+    private ImageButton main_BTN_play;
+    private TextView main_LBL_leftScore;
+    private TextView main_LBL_rightScore;
+    private ImageView main_IMG_leftCard;
+    private ImageView main_IMG_rightCard;
+    private TextView main_LBL_leftPlayer;
+    private TextView main_LBL_rightPlayer;
+    private ImageView main_IMG_leftPlayer;
+    private ImageView main_IMG_rightPlayer;
+    private TextView main_LBL_cardsRemaining;
     private Game game;
     private ProgressBar main_PRGBAR_nextDraw;
     private MediaPlayer mp;
@@ -68,33 +68,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
-        BTN_nextDraw = findViewById(R.id.BTN_nextDraw);
-        LBL_leftScore = findViewById(R.id.LBL_leftScore);
-        LBL_rightScore = findViewById(R.id.LBL_rightScore);
-        IMG_leftCard = findViewById(R.id.IMG_leftCard);
-        IMG_rightCard = findViewById(R.id.IMG_rightCard);
-        LBL_leftPlayer = findViewById(R.id.LBL_leftPlayer);
-        LBL_rightPlayer = findViewById(R.id.LBL_rightPlayer);
-        IMG_leftPlayer = findViewById(R.id.IMG_player1);
-        IMG_rightPlayer = findViewById(R.id.IMG_player1);
-        LBL_cardsRemaining = findViewById(R.id.LBL_cardsRemaining);
+        main_BTN_play = findViewById(R.id.main_BTN_play);
+        main_LBL_leftScore = findViewById(R.id.main_LBL_leftScore);
+        main_LBL_rightScore = findViewById(R.id.main_LBL_rightScore);
+        main_IMG_leftCard = findViewById(R.id.main_IMG_leftCard);
+        main_IMG_rightCard = findViewById(R.id.main_IMG_rightCard);
+        main_LBL_leftPlayer = findViewById(R.id.main_LBL_leftPlayer);
+        main_LBL_rightPlayer = findViewById(R.id.main_LBL_rightPlayer);
+        main_IMG_leftPlayer = findViewById(R.id.main_IMG_player1);
+        main_IMG_rightPlayer = findViewById(R.id.main_IMG_player2);
+        main_LBL_cardsRemaining = findViewById(R.id.main_LBL_cardsRemaining);
         main_PRGBAR_nextDraw = findViewById(R.id.main_PRGBAR_nextDraw);
     }
 
     private void initViews() {
-        LBL_cardsRemaining.setText("Cards left: " + (Deck.TOTAL_NUM_CARDS));
-        LBL_leftScore.setText("" + game.getP1().getScore());
-        LBL_rightScore.setText("" + game.getP2().getScore());
-        LBL_leftPlayer.setText(game.getP1().getName());
-        Glide.with(getApplicationContext()).load(getResources().getIdentifier("player_1","drawable",getPackageName())).into(IMG_leftPlayer);
-        LBL_rightPlayer.setText(game.getP2().getName());
-        Glide.with(getApplicationContext()).load(getResources().getIdentifier("player_2","drawable",getPackageName())).into(IMG_rightPlayer);
-        BTN_nextDraw.setOnClickListener(new View.OnClickListener() {
+        main_LBL_cardsRemaining.setText("Cards left: " + (Deck.TOTAL_NUM_CARDS));
+        main_LBL_leftScore.setText("" + game.getP1().getScore());
+        main_LBL_rightScore.setText("" + game.getP2().getScore());
+        main_LBL_leftPlayer.setText(game.getP1().getName());
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("player_1","drawable",getPackageName())).into(main_IMG_leftPlayer);
+        main_LBL_rightPlayer.setText(game.getP2().getName());
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("player_2","drawable",getPackageName())).into(main_IMG_rightPlayer);
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("play_button", "drawable", getPackageName())).into(main_BTN_play);
+        main_BTN_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startGamePressed = true;
                 startAutomatedGame();
-                BTN_nextDraw.setVisibility(View.GONE);
+                main_BTN_play.setVisibility(View.GONE);
             }
         });
     }
@@ -113,11 +114,11 @@ public class MainActivity extends AppCompatActivity {
                         game.makeStep();
                         int id1 = getResources().getIdentifier(String.format("card_%s_%c", game.getP1().getCurrentCard().getValue(), game.getP1().getCurrentCard().getSign()), "drawable", getPackageName());
                         int id2 = getResources().getIdentifier(String.format("card_%s_%c", game.getP2().getCurrentCard().getValue() , game.getP2().getCurrentCard().getSign()), "drawable", getPackageName());
-                        Glide.with(getApplicationContext()).load(id1).placeholder(id1).into(IMG_leftCard);
-                        Glide.with(getApplicationContext()).load(id2).placeholder(id2).into(IMG_rightCard);
-                        LBL_leftScore.setText("" + game.getP1().getScore());
-                        LBL_rightScore.setText("" + game.getP2().getScore());
-                        LBL_cardsRemaining.setText("Cards left: " + ((Deck.TOTAL_NUM_CARDS)-game.getDeck().getDrawedCards()));
+                        Glide.with(getApplicationContext()).load(id1).placeholder(id1).into(main_IMG_leftCard);
+                        Glide.with(getApplicationContext()).load(id2).placeholder(id2).into(main_IMG_rightCard);
+                        main_LBL_leftScore.setText("" + game.getP1().getScore());
+                        main_LBL_rightScore.setText("" + game.getP2().getScore());
+                        main_LBL_cardsRemaining.setText("Cards left: " + ((Deck.TOTAL_NUM_CARDS)-game.getDeck().getDrawedCards()));
                         if (game.isDone()) {
                             startGamePressed = false;
                             stopAutomatedGame();

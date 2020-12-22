@@ -21,13 +21,13 @@
         android:progressDrawable="@drawable/custom_progress"/>
 
     <ImageButton
-        android:id="@+id/BTN_nextDraw"
+        android:id="@+id/main_BTN_play"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/play_button"/>
+        android:background="#00000000"/>
 
     <LinearLayout
         android:layout_width="100dp"
@@ -40,7 +40,7 @@
 
 
         <TextView
-            android:id="@+id/LBL_leftScore"
+            android:id="@+id/main_LBL_leftScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -49,14 +49,14 @@
 
         <ImageView
 
-            android:id="@+id/IMG_player1"
+            android:id="@+id/main_IMG_player1"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"
             android:layout_height="60dp"/>
 <!--            android:src="@drawable/player_1"/>-->
 
         <TextView
-            android:id="@+id/LBL_leftPlayer"
+            android:id="@+id/main_LBL_leftPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -77,7 +77,7 @@
 
 
         <TextView
-            android:id="@+id/LBL_rightScore"
+            android:id="@+id/main_LBL_rightScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -85,7 +85,7 @@
             android:textSize="60sp"/>
 
         <ImageView
-            android:id="@+id/IMG_player2"
+            android:id="@+id/main_IMG_player2"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"
             android:layout_height="60dp"/>
@@ -93,7 +93,7 @@
 
 
         <TextView
-            android:id="@+id/LBL_rightPlayer"
+            android:id="@+id/main_LBL_rightPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -104,7 +104,7 @@
 
 
     <TextView
-        android:id="@+id/LBL_winner"
+        android:id="@+id/main_LBL_winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
@@ -122,19 +122,19 @@
 
 
         <ImageView
-            android:id="@+id/IMG_leftCard"
+            android:id="@+id/main_IMG_leftCard"
             android:layout_width="180dp"
             android:src="@drawable/card_back"
             android:layout_height="220dp" />
         <ImageView
-            android:id="@+id/IMG_rightCard"
+            android:id="@+id/main_IMG_rightCard"
             android:layout_width="180dp"
             android:src="@drawable/card_back"
             android:layout_height="220dp" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/LBL_cardsRemaining"
+        android:id="@+id/main_LBL_cardsRemaining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
