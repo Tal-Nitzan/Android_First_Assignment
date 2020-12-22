@@ -24,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
 
 import java.util.Random;
 
@@ -170,6 +171,7 @@ public class WinnerActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("play_button","drawable",getPackageName())).into(winner_BTN_newGame);
         winner_BTN_records.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -178,6 +180,7 @@ public class WinnerActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("records_button","drawable",getPackageName())).into(winner_BTN_records);
     }
 
 }

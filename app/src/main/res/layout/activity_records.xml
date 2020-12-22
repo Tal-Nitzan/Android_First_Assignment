@@ -40,8 +40,8 @@
         <ImageButton
             android:id="@+id/records_BTN_newGame"
             android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/play_button"/>
+            android:layout_height="70dp"/>
+<!--            android:background="@drawable/play_button"/>-->
 
         <TextView
             android:id="@+id/records_LBL_newGame"

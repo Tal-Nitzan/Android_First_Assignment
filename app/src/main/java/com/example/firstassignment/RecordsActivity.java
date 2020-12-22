@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import com.bumptech.glide.Glide;
 
 public class RecordsActivity extends AppCompatActivity {
 
@@ -50,6 +51,7 @@ public class RecordsActivity extends AppCompatActivity {
                 startActivity(new Intent(RecordsActivity.this, MainActivity.class));
             }
         });
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("play_button","drawable",getPackageName())).into(records_BTN_newGame);
     }
 
     private void findViews() {

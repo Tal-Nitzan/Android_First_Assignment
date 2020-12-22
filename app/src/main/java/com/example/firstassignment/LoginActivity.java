@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                 openMainActivity();
             }
         });
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("play_button","drawable",getPackageName())).into(login_BTN_newGame);
         login_BTN_records.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -45,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 openRecordsActivity();
             }
         });
+        Glide.with(getApplicationContext()).load(getResources().getIdentifier("records_button","drawable",getPackageName())).into(login_BTN_records);
     }
 
     private void findViews() {
